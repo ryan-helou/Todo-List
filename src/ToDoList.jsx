@@ -6,7 +6,7 @@ function TodoList(){
     const[newTask, setNewTask] = useState("");
 
     function handleInputChange(event){
-
+        setNewTask(event.target.value);
     }
     
     function addTask(){
@@ -27,6 +27,7 @@ function TodoList(){
                     type = "text"
                     placeholder = "Enter task"
                     value = {newTask}
+                    onChange = {handleInputChange}
                 >
                 </input>
             </div>
