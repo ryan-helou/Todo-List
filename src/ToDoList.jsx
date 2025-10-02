@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 function TodoList(){
     
-    const[tasks,setTasks] = useState([]);
+    const[tasks,setTasks] = useState(["Make a million", "Be a baller", "Make a billion"]);
     const[newTask, setNewTask] = useState("");
 
     function handleInputChange(event){
@@ -30,6 +30,12 @@ function TodoList(){
                     onChange = {handleInputChange}
                 >
                 </input>
+                <button
+                    className = "button-add"
+                    onClick = {addTask}
+                    >
+                    Add
+                </button>
             </div>
 
         </div>
