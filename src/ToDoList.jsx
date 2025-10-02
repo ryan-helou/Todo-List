@@ -25,7 +25,7 @@ function TodoList(){
             <div>
                 <input
                     type = "text"
-                    placeholder = "Enter a task"
+                    placeholder = "Enter task"
                     value = {newTask}
                 >
                 </input>
