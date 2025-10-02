@@ -23,11 +23,11 @@ function TodoList(){
             <h1>To Do List!</h1>
 
             <div>
-                <input>
+                <input
                     type = "text"
                     placeholder = "Enter a task"
                     value = {newTask}
-                    
+                >
                 </input>
             </div>
 
