@@ -4,7 +4,7 @@ function TodoList() {
   const [tasks, setTasks] = useState([
     "Make a million",
     "Be a baller",
-    "Make a billion today",
+    "Make a trillion today",
   ]);
   const [newTask, setNewTask] = useState("");
 
