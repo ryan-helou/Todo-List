@@ -27,14 +27,13 @@ function TodoList() {
           value={newTask}
           onChange={handleInputChange}
         ></input>
-        <button className="button-add" onClick={addTask}>
+        <button className="add-button" onClick={addTask}>
           Add
         </button>
       </div>
       <ol>
         {tasks.map((task, index) => (
           <li key={index}>
-            {task}
             <span className="text">{task}</span>
             <button className="delete-button" onClick={() => deleteTask(index)}>
               Delete
