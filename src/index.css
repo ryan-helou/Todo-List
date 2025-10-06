@@ -41,6 +41,7 @@ ol{
     padding:0;
 }
 li{
+    width: 27rem;
     font-size : 2rem;
     font-weight: bold;
     padding: 15px;
@@ -52,5 +53,5 @@ li{
     align-items: center;
 }
 .text{
-    flex: 1;
+    flex: 0 1 auto;
 }
