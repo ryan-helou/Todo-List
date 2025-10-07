@@ -5,6 +5,7 @@ function TodoList() {
     "Make a million",
     "Be a baller",
     "Make a trillion today",
+    "Join FAANG",
   ]);
   const [newTask, setNewTask] = useState("");
 
