@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 function TodoList() {
   const [tasks, setTasks] = useState([
-    "Make a million",
-    "Be a baller",
-    "Make a trillion today",
-    "Join FAANG",
+    { title: "Make a million", desc: "already done lol" },
+    { title: "Be a baller", desc: "born done lol" },
+    { title: "Make a trillion today", desc: "almost done lol" },
+    { title: "Join FAANG", desc: "soon" },
   ]);
   const [newTask, setNewTask] = useState("");
 
