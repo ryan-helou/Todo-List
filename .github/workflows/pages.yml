@@ -1,9 +1,8 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: ["main"]   # << triggers on every push to main
-  workflow_dispatch:      # << allows manual run button
+  workflow_dispatch:
+
 
 permissions:
   contents: read
