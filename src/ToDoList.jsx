@@ -55,7 +55,7 @@ function TodoList() {
       999
     );
 
-    // treat the due date as due by the END of that day (11:59:59 pm)
+    // treat the due date as due by the END of that day (11:59:59 pmi want )
     const due = new Date(iso + "T23:59:59");
 
     return due < endOfToday;
@@ -94,26 +94,34 @@ function TodoList() {
         </button>
       </form>
       <ol>
-        {[...tasks].sort(compareDue).map((task, index) => (
-          <li key={index}>
-            <span className="text">
-              <strong className="task-title">{task.title}</strong>
-              {task.desc ? <div className="task-desc">{task.desc}</div> : null}
-              {formatDateLocal(task.dueAt) && (
-                <span
-                  className={`date-chip ${
-                    isOverdue(task.dueAt) ? "overdue" : ""
-                  }`}
-                >
-                  Due {formatDateLocal(task.dueAt)}
-                </span>
-              )}
-            </span>
-            <button className="delete-button" onClick={() => deleteTask(index)}>
-              Done
-            </button>
-          </li>
-        ))}
+        {tasks
+          .map((task, originalIndex) => ({ task, originalIndex }))
+          .sort((a, b) => compareDue(a.task, b.task))
+          .map(({ task, originalIndex }) => (
+            <li key={originalIndex}>
+              <span className="text">
+                <strong className="task-title">{task.title}</strong>
+                {task.desc ? (
+                  <div className="task-desc">{task.desc}</div>
+                ) : null}
+                {formatDateLocal(task.dueAt) && (
+                  <span
+                    className={`date-chip ${
+                      isOverdue(task.dueAt) ? "overdue" : ""
+                    }`}
+                  >
+                    Due {formatDateLocal(task.dueAt)}
+                  </span>
+                )}
+              </span>
+              <button
+                className="delete-button"
+                onClick={() => deleteTask(originalIndex)}
+              >
+                Done
+              </button>
+            </li>
+          ))}
       </ol>
     </div>
   );
