@@ -7,44 +7,57 @@ function TodoList() {
     { title: "Make a trillion today", desc: "almost done lol" },
     { title: "Join FAANG", desc: "soon" },
   ]);
-  const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState({ title: "", desc: "" });
 
-  function handleInputChange(event) {
-    setNewTask(event.target.value);
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setNewTask((t) => ({ ...t, [name]: value }));
   }
 
   function addTask(e) {
-    e?.preventDefault();
-    if (newTask.trim() !== "") {
-      setTasks((t) => [...t, newTask]);
-      setNewTask("");
+    e.preventDefault();
+    if (newTask.title.trim() !== "") {
+      setTasks((prev) => [...prev, { ...newTask }]);
+      setNewTask({ title: "", desc: "" });
     }
   }
 
   function deleteTask(index) {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
-    setTasks(updatedTasks);
+    setTasks((prev) => prev.filter((_, i) => i !== index));
   }
 
   return (
     <div className="to-do-list">
       <h1>To Do List!</h1>
 
-      <form onSubmit={addTask}>
+      <form className="task-form" onSubmit={addTask}>
         <input
+          className="title-input"
           type="text"
-          placeholder="Enter task"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
+          name="title"
+          placeholder="Title"
+          value={newTask.title}
+          onChange={handleChange}
         ></input>
-        <button className="add-button" onClick={addTask}>
+        <input
+          className="desc-input"
+          type="text"
+          name="desc"
+          placeholder="Description"
+          value={newTask.desc}
+          onChange={handleChange}
+        ></input>
+        <button className="add-button" type="submit">
           Add
         </button>
       </form>
       <ol>
         {tasks.map((task, index) => (
           <li key={index}>
-            <span className="text">{task}</span>
+            <span className="text">
+              <strong>{task.title}</strong>
+              {task.desc ? <div className="desc">{task.desc}</div> : null}
+            </span>
             <button className="delete-button" onClick={() => deleteTask(index)}>
               Delete
             </button>

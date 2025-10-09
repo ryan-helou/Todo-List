@@ -49,9 +49,17 @@ button{
 .delete-button:hover{
     filter: brightness(1.05);
 }
-input[type="text"]{
-    background: #0F1F1A;             /* deep green-black */
-    border: 1px solid #6EE7B7;       /* mint border */
+.title-input{
+    background: #0F1F1A;             
+    border: 1px solid #6EE7B7;      
+    color: #EAFAF4;  
+    font-size: 1.6rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+.desc-input{
+    background: #0F1F1A;             
+    border: 1px solid #6EE7B7;      
     color: #EAFAF4;  
     font-size: 1.6rem;
     padding: 10px;
@@ -59,7 +67,7 @@ input[type="text"]{
 }
 input::placeholder{ color: #B7E4CF; }
 input:focus{
-  outline: 1px solid #10B981;      /* teal focus ring */
+  outline: 1px solid #10B981;      
   outline-offset: 1px;
 }
 ol{
@@ -86,4 +94,21 @@ li{
     overflow-wrap: anywhere;
     word-break: break-word; 
     hyphens: auto;   
+}
+
+.task-form {
+  display: grid;
+  grid-template-columns: 1fr auto;   
+  grid-template-rows: auto auto;     
+  gap: 6px 6px;                    
+  align-items: start;
+  max-width: 640px;                  
+}
+
+
+.task-form .add-button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  height: 100%;        
+  align-self: stretch;  
 }
