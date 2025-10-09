@@ -67,12 +67,12 @@ button{
     border-radius: 5px;
 }
 .date-input{
-    height: 34px;                
+    height: 12px;                
     background: #0F1F1A;
     border: 1px solid #6EE7B7;
     color: #EAFAF4;
     font-size: 1.1rem;
-    padding: 8px 10px;
+    padding: 10px;
     border-radius: 5px;
     color-scheme: dark; 
 }
@@ -129,10 +129,10 @@ li{
 
 .date-chip {
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 4px;
   padding: 2px 10px;
   border-radius: 999px;
-  font-size: 1rem;       
+  font-size: 1.1rem;       
   font-weight: 600;
   background: rgba(16, 185, 129, 0.18);
   border: 1px solid rgba(16, 185, 129, 0.45);
