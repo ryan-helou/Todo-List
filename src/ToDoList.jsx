@@ -2,12 +2,11 @@ import React, { useState } from "react";
 
 function TodoList() {
   const [tasks, setTasks] = useState([
-    { title: "Make a million", desc: "already done lol" },
-    { title: "Be a baller", desc: "born done lol" },
-    { title: "Make a trillion today", desc: "almost done lol" },
-    { title: "Join FAANG", desc: "soon" },
+    { title: "Make a million", desc: "already done lol", dueAt: "2024-12-31" },
+    { title: "Be a baller", desc: "born done lol", dueAt: "2025-12-25" },
+    { title: "Join FAANG", desc: "soon", dueAt: "2026-12-31" },
   ]);
-  const [newTask, setNewTask] = useState({ title: "", desc: "" });
+  const [newTask, setNewTask] = useState({ title: "", desc: "", dueAt: "" });
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -18,12 +17,42 @@ function TodoList() {
     e.preventDefault();
     if (newTask.title.trim() !== "") {
       setTasks((prev) => [...prev, { ...newTask }]);
-      setNewTask({ title: "", desc: "" });
+      setNewTask({ title: "", desc: "", dueAt: "" });
     }
   }
 
   function deleteTask(index) {
     setTasks((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  function formatDateLocal(iso) {
+    if (!iso) return null; // if there's no date, show nothing
+    return new Date(iso + "T00:00:00").toLocaleDateString(undefined, {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
+
+  function isOverdue(iso) {
+    if (!iso) return false; // no date = not overdue
+    const now = new Date();
+
+    // consider a task overdue only if we're PAST the end of today
+    const endOfToday = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      23,
+      59,
+      59,
+      999
+    );
+
+    // treat the due date as due by the END of that day (11:59:59 pm)
+    const due = new Date(iso + "T23:59:59");
+
+    return due < endOfToday;
   }
 
   return (
@@ -47,22 +76,46 @@ function TodoList() {
           value={newTask.desc}
           onChange={handleChange}
         ></input>
+        <input
+          className="date-input"
+          type="date"
+          name="dueAt"
+          value={newTask.dueAt}
+          onChange={handleChange}
+        />
         <button className="add-button" type="submit">
           Add
         </button>
       </form>
       <ol>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            <span className="text">
-              <strong>{task.title}</strong>
-              {task.desc ? <div className="desc">{task.desc}</div> : null}
-            </span>
-            <button className="delete-button" onClick={() => deleteTask(index)}>
-              Delete
-            </button>
-          </li>
-        ))}
+        {tasks.map((task, index) => {
+          const dueText = formatDateLocal(task.dueAt);
+          const overdue = isOverdue(task.dueAt);
+
+          return (
+            <li key={index}>
+              <span className="text">
+                <strong className="task-title">{task.title}</strong>
+                {task.desc ? (
+                  <div className="task-desc">{task.desc}</div>
+                ) : null}
+
+                {dueText && (
+                  <span className={`date-chip ${overdue ? "overdue" : ""}`}>
+                    Due {dueText}
+                  </span>
+                )}
+              </span>
+
+              <button
+                className="delete-button"
+                onClick={() => deleteTask(index)}
+              >
+                Done
+              </button>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
