@@ -13,6 +13,12 @@ function TodoList() {
     setNewTask((t) => ({ ...t, [name]: value }));
   }
 
+  function compareDue(a, b) {
+    if (!a.dueAt && !b.dueAt) return 0; // both undated
+    if (!a.dueAt) return 1; // a undated -> after b
+    if (!b.dueAt) return -1; // b undated -> after a
+    return a.dueAt.localeCompare(b.dueAt); // ISO YYYY-MM-DD compare
+  }
   function addTask(e) {
     e.preventDefault();
     if (newTask.title.trim() !== "") {
@@ -88,34 +94,26 @@ function TodoList() {
         </button>
       </form>
       <ol>
-        {tasks.map((task, index) => {
-          const dueText = formatDateLocal(task.dueAt);
-          const overdue = isOverdue(task.dueAt);
-
-          return (
-            <li key={index}>
-              <span className="text">
-                <strong className="task-title">{task.title}</strong>
-                {task.desc ? (
-                  <div className="task-desc">{task.desc}</div>
-                ) : null}
-
-                {dueText && (
-                  <span className={`date-chip ${overdue ? "overdue" : ""}`}>
-                    Due {dueText}
-                  </span>
-                )}
-              </span>
-
-              <button
-                className="delete-button"
-                onClick={() => deleteTask(index)}
-              >
-                Done
-              </button>
-            </li>
-          );
-        })}
+        {[...tasks].sort(compareDue).map((task, index) => (
+          <li key={index}>
+            <span className="text">
+              <strong className="task-title">{task.title}</strong>
+              {task.desc ? <div className="task-desc">{task.desc}</div> : null}
+              {formatDateLocal(task.dueAt) && (
+                <span
+                  className={`date-chip ${
+                    isOverdue(task.dueAt) ? "overdue" : ""
+                  }`}
+                >
+                  Due {formatDateLocal(task.dueAt)}
+                </span>
+              )}
+            </span>
+            <button className="delete-button" onClick={() => deleteTask(index)}>
+              Done
+            </button>
+          </li>
+        ))}
       </ol>
     </div>
   );
