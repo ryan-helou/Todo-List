@@ -41,8 +41,8 @@ button{
 .delete-button{
     display: inline-flex; align-items: center; justify-content: center;
     height: 46px; padding: 0 14px; border-radius: 5px;
-    background: linear-gradient(135deg, #FB7185, #F43F5E);
-    border: 1px solid rgba(244,63,94,.55);
+    background: linear-gradient(135deg, #228b71, #13beb0);
+    border: 1px solid rgba(21, 104, 124, 0.55);
     color: #FFFFFF;
     margin-left: auto;
 }
@@ -50,21 +50,36 @@ button{
     filter: brightness(1.05);
 }
 .title-input{
+    height: 30px;
     background: #0F1F1A;             
     border: 1px solid #6EE7B7;      
     color: #EAFAF4;  
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     padding: 10px;
     border-radius: 5px;
 }
 .desc-input{
+    height: 15px;
     background: #0F1F1A;             
     border: 1px solid #6EE7B7;      
     color: #EAFAF4;  
-    font-size: 1.6rem;
+    font-size: 1.1rem;
     padding: 10px;
     border-radius: 5px;
 }
+.date-input{
+    height: 34px;                
+    background: #0F1F1A;
+    border: 1px solid #6EE7B7;
+    color: #EAFAF4;
+    font-size: 1.1rem;
+    padding: 8px 10px;
+    border-radius: 5px;
+    color-scheme: dark; /* hints the UA to render its popup in dark mode if supported */
+
+}
+
+
 input::placeholder{ color: #B7E4CF; }
 input:focus{
   outline: 1px solid #10B981;      
@@ -96,10 +111,26 @@ li{
     hyphens: auto;   
 }
 
+.text > strong {          
+  display: block;
+  font-size: 1.7rem;     
+  font-weight: 700;        
+  line-height: 1.2;
+}
+
+.text > .desc {            
+  display: block;
+  font-size: 1.3rem;       
+  font-weight: 400;        
+  line-height: 1.35;
+  margin-top: 4px;
+  opacity:0.95;           
+}
+
 .task-form {
   display: grid;
   grid-template-columns: 1fr auto;   
-  grid-template-rows: auto auto;     
+  grid-template-rows: auto auto auto;     
   gap: 6px 6px;                    
   align-items: start;
   max-width: 640px;                  
@@ -108,7 +139,7 @@ li{
 
 .task-form .add-button {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   height: 100%;        
   align-self: stretch;  
 }
