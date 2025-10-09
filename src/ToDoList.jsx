@@ -14,10 +14,10 @@ function TodoList() {
   }
 
   function compareDue(a, b) {
-    if (!a.dueAt && !b.dueAt) return 0; // both undated
-    if (!a.dueAt) return 1; // a undated -> after b
-    if (!b.dueAt) return -1; // b undated -> after a
-    return a.dueAt.localeCompare(b.dueAt); // ISO YYYY-MM-DD compare
+    if (!a.dueAt && !b.dueAt) return 0;
+    if (!a.dueAt) return 1;
+    if (!b.dueAt) return -1;
+    return a.dueAt.localeCompare(b.dueAt);
   }
   function addTask(e) {
     e.preventDefault();
@@ -32,7 +32,7 @@ function TodoList() {
   }
 
   function formatDateLocal(iso) {
-    if (!iso) return null; // if there's no date, show nothing
+    if (!iso) return null;
     return new Date(iso + "T00:00:00").toLocaleDateString(undefined, {
       month: "short",
       day: "numeric",
@@ -41,10 +41,9 @@ function TodoList() {
   }
 
   function isOverdue(iso) {
-    if (!iso) return false; // no date = not overdue
+    if (!iso) return false;
     const now = new Date();
 
-    // consider a task overdue only if we're PAST the end of today
     const endOfToday = new Date(
       now.getFullYear(),
       now.getMonth(),
@@ -55,7 +54,6 @@ function TodoList() {
       999
     );
 
-    // treat the due date as due by the END of that day (11:59:59 pmi want )
     const due = new Date(iso + "T23:59:59");
 
     return due < endOfToday;
@@ -93,7 +91,7 @@ function TodoList() {
           Add
         </button>
       </form>
-      <ol>
+      <ol className="task-grid">
         {tasks
           .map((task, originalIndex) => ({ task, originalIndex }))
           .sort((a, b) => compareDue(a.task, b.task))
