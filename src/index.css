@@ -150,11 +150,46 @@ li{
   grid-template-rows: auto auto auto;     
   gap: 6px 6px;                    
   align-items: start;
-  max-width: 640px;                  
+  max-width: 640px;        
+  margin-bottom: 24px;             
 }
 .task-form .add-button {
   grid-column: 2;
   grid-row: 1 / span 3;
   height: 100%;        
   align-self: stretch;  
+}
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  list-style: none;    
+  padding: 0;
+  width: 100%;
+  max-width: 1200px;    
+  margin: 0 auto;
+}
+.task-grid > li {
+  width: auto;                 
+  display: flex;
+  flex-direction: column;    
+  align-items: stretch;
+  gap: 8px;
+
+  font-size: 1rem;            
+  font-weight: 400;         
+  padding: 12px 16px;
+  background: rgba(29, 78, 63, 0.45);
+  border: 3px solid rgba(145, 240, 202, 0.28);
+  color: #EAFAF4;
+  border-radius: 5px;
+  margin: 0;                   
+}
+
+.task-grid > li .text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
 }
