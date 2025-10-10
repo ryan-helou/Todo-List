@@ -4,7 +4,7 @@ function TodoList() {
   const [tasks, setTasks] = useState([
     { title: "Make a million", desc: "already done lol", dueAt: "2024-12-31" },
     { title: "Be a baller", desc: "born done lol", dueAt: "2025-12-25" },
-    { title: "Join FAANG", desc: "soon", dueAt: "2026-12-31" },
+    { title: "Join FAANG", desc: "too easy", dueAt: "2026-12-31" },
   ]);
   const [newTask, setNewTask] = useState({ title: "", desc: "", dueAt: "" });
 
