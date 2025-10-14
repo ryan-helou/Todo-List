@@ -2,9 +2,17 @@ import React, { useState } from "react";
 
 function TodoList() {
   const [tasks, setTasks] = useState([
-    { title: "Make a billion", desc: "already done lol", dueAt: "2024-12-31" },
-    { title: "Be a baller", desc: "born done lol", dueAt: "2025-12-25" },
-    { title: "Join FAANG", desc: "too easy", dueAt: "2026-12-31" },
+    {
+      title: "Finish lab report",
+      desc: "Submitted on Moodle 🎓",
+      dueAt: "2025-12-10",
+    },
+    {
+      title: "Book study room",
+      desc: "4–6pm, silent floor",
+      dueAt: "2025-10-14",
+    },
+    { title: "Morning run", desc: "3K easy pace 🏃", dueAt: "2025-11-10" },
   ]);
   const [newTask, setNewTask] = useState({ title: "", desc: "", dueAt: "" });
 
