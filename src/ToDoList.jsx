@@ -15,6 +15,20 @@ function TodoList() {
     { title: "Morning run", desc: "3K easy pace 🏃", dueAt: "2025-11-10" },
   ]);
   const [newTask, setNewTask] = useState({ title: "", desc: "", dueAt: "" });
+  const [closingIds, setClosingIds] = useState([]);
+
+  function markDone(index) {
+    setClosingIds((ids) => (ids.includes(index) ? ids : [...ids, index]));
+  }
+  function handleCardTransitionEnd(e, index) {
+    if (e.target !== e.currentTarget) return;
+    if (e.propertyName !== "opacity") return;
+
+    if (closingIds.includes(index)) {
+      deleteTask(index);
+      setClosingIds((ids) => ids.filter((id) => id !== index));
+    }
+  }
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -104,7 +118,11 @@ function TodoList() {
           .map((task, originalIndex) => ({ task, originalIndex }))
           .sort((a, b) => compareDue(a.task, b.task))
           .map(({ task, originalIndex }) => (
-            <li key={originalIndex}>
+            <li
+              key={originalIndex}
+              className={closingIds.includes(originalIndex) ? "closing" : ""}
+              onTransitionEnd={(e) => handleCardTransitionEnd(e, originalIndex)}
+            >
               <span className="text">
                 <strong className="task-title">{task.title}</strong>
                 {task.desc ? (
@@ -122,7 +140,7 @@ function TodoList() {
               </span>
               <button
                 className="delete-button"
-                onClick={() => deleteTask(originalIndex)}
+                onClick={() => markDone(originalIndex)}
               >
                 Done
               </button>
