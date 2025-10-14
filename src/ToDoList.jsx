@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function TodoList() {
-  const [tasks, setTasks] = useState([
-    {
-      title: "Finish lab report",
-      desc: "Submitted on Moodle 🎓",
-      dueAt: "2025-12-10",
-    },
-    {
-      title: "Book study room",
-      desc: "4–6pm, silent floor",
-      dueAt: "2025-10-14",
-    },
-    { title: "Morning run", desc: "3K easy pace 🏃", dueAt: "2025-11-10" },
-  ]);
+  const [tasks, setTasks] = useState(() => {
+    try {
+      const raw = localStorage.getItem("todo.tasks");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (
+          Array.isArray(parsed) &&
+          parsed.every((t) => t && typeof t.title === "string")
+        ) {
+          return parsed;
+        }
+      }
+    } catch {}
+    return [
+      {
+        title: "Finish lab report",
+        desc: "Submitted on Moodle 🎓",
+        dueAt: "2025-12-10",
+      },
+      {
+        title: "Book study room",
+        desc: "4–6pm, silent floor",
+        dueAt: "2025-10-14",
+      },
+      { title: "Morning run", desc: "3K easy pace 🏃", dueAt: "2025-11-10" },
+    ];
+  });
+  useEffect(() => {
+    try {
+      localStorage.setItem("todo.tasks", JSON.stringify(tasks));
+    } catch {}
+  }, [tasks]);
+
   const [newTask, setNewTask] = useState({ title: "", desc: "", dueAt: "" });
   const [closingIds, setClosingIds] = useState([]);
 
