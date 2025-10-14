@@ -1,3 +1,6 @@
+🔗 **Live Demo:** [https://ryan-helou.github.io/todo-list/](https://ryan-helou.github.io/todo-list/)
+
+
 # 🪐 React To‑Do List
 
 A sleek pixel‑styled **React To‑Do List** with glassmorphism, smooth fade‑out animations, and persistent LocalStorage.  
