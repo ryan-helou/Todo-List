@@ -103,85 +103,87 @@ function TodoList() {
   }
 
   return (
-    <div className="to-do-list">
-      <div style={{ width: "100%", height: "600px", position: "relative" }}>
-        <Prism
-          animationType="rotate"
-          timeScale={0.5}
-          height={3.5}
-          baseWidth={5.5}
-          scale={3.6}
-          hueShift={0}
-          colorFrequency={1}
-          noise={0.5}
-          glow={1}
-        />
-      </div>
-      <h1>To Do List!</h1>
+    <>
+      <Prism
+        animationType="rotate"
+        timeScale={0.15}
+        height={3}
+        baseWidth={5}
+        scale={4}
+        hueShift={-0.24}
+        colorFrequency={0.7}
+        noise={0}
+        glow={0.8}
+      />
+      <div className="to-do-list">
+        <h1>To Do List!</h1>
 
-      <form className="task-form" onSubmit={addTask}>
-        <input
-          className="title-input"
-          type="text"
-          name="title"
-          placeholder="Title"
-          value={newTask.title}
-          onChange={handleChange}
-        ></input>
-        <input
-          className="desc-input"
-          type="text"
-          name="desc"
-          placeholder="Description"
-          value={newTask.desc}
-          onChange={handleChange}
-        ></input>
-        <input
-          className="date-input"
-          type="date"
-          name="dueAt"
-          value={newTask.dueAt}
-          onChange={handleChange}
-        />
-        <button className="add-button" type="submit">
-          Add
-        </button>
-      </form>
-      <ol className="task-grid">
-        {tasks
-          .map((task, originalIndex) => ({ task, originalIndex }))
-          .sort((a, b) => compareDue(a.task, b.task))
-          .map(({ task, originalIndex }) => (
-            <li
-              key={originalIndex}
-              className={closingIds.includes(originalIndex) ? "closing" : ""}
-              onTransitionEnd={(e) => handleCardTransitionEnd(e, originalIndex)}
-            >
-              <span className="text">
-                <strong className="task-title">{task.title}</strong>
-                {task.desc ? (
-                  <div className="task-desc">{task.desc}</div>
-                ) : null}
-                {formatDateLocal(task.dueAt) && (
-                  <span
-                    className={`date-chip ${
-                      isOverdue(task.dueAt) ? "overdue" : ""
-                    }`}
-                  >
-                    Due {formatDateLocal(task.dueAt)}
-                  </span>
-                )}
-              </span>
-              <button
-                className="delete-button"
-                onClick={() => markDone(originalIndex)}
+        <form className="task-form" onSubmit={addTask}>
+          <input
+            className="title-input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            value={newTask.title}
+            onChange={handleChange}
+          ></input>
+          <input
+            className="desc-input"
+            type="text"
+            name="desc"
+            placeholder="Description"
+            value={newTask.desc}
+            onChange={handleChange}
+          ></input>
+          <input
+            className="date-input"
+            type="date"
+            name="dueAt"
+            value={newTask.dueAt}
+            onChange={handleChange}
+          />
+          <button className="add-button" type="submit">
+            Add
+          </button>
+        </form>
+        <ol className="task-grid">
+          {tasks
+            .map((task, originalIndex) => ({ task, originalIndex }))
+            .sort((a, b) => compareDue(a.task, b.task))
+            .map(({ task, originalIndex }) => (
+              <li
+                key={originalIndex}
+                className={closingIds.includes(originalIndex) ? "closing" : ""}
+                onTransitionEnd={(e) =>
+                  handleCardTransitionEnd(e, originalIndex)
+                }
               >
-                Done
-              </button>
-            </li>
-          ))}
-      </ol>
-    </div>
+                <span className="text">
+                  <strong className="task-title">{task.title}</strong>
+                  {task.desc ? (
+                    <div className="task-desc">{task.desc}</div>
+                  ) : null}
+                  {formatDateLocal(task.dueAt) && (
+                    <span
+                      className={`date-chip ${
+                        isOverdue(task.dueAt) ? "overdue" : ""
+                      }`}
+                    >
+                      Due {formatDateLocal(task.dueAt)}
+                    </span>
+                  )}
+                </span>
+                <button
+                  className="delete-button"
+                  onClick={() => markDone(originalIndex)}
+                >
+                  Done
+                </button>
+              </li>
+            ))}
+        </ol>
+      </div>
+    </>
   );
 }
 export default TodoList;
