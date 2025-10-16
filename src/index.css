@@ -11,8 +11,9 @@
     color: #EAFAF4;
 }
 body{
+  background-color: #0F1F1A;
   margin: 0;
-  background-image: url('/galaxy.jpg'); 
+  /* background-image: url('/galaxy.jpg');  */
   background-size: cover;          
   background-position: center;       
   background-repeat: no-repeat;      
