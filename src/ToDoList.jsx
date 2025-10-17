@@ -110,7 +110,7 @@ function TodoList() {
         height={3}
         baseWidth={5}
         scale={4}
-        hueShift={-0.24}
+        hueShift={-0.23}
         colorFrequency={0.7}
         noise={0}
         glow={0.8}
