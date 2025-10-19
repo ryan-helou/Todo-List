@@ -19,7 +19,7 @@ function TodoList() {
       {
         title: "Finish lab report",
         desc: "Submitted on Moodle 🎓",
-        dueAt: "2025-12-10",
+        dueAt: "2025-11-10",
       },
       {
         title: "Book study room",
