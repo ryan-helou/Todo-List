@@ -1,4 +1,4 @@
-🔗 **Live Demo:** [[https://todo-list-2icq9f6us-ryan-helous-projects.vercel.app/](https://todo-list-ryan-helous-projects.vercel.app/)
+🔗 **Live Demo:** [https://todo-list-2icq9f6us-ryan-helous-projects.vercel.app/](https://todo-list-ryan-helous-projects.vercel.app/)
 
 
 # 🪐 React To‑Do List
