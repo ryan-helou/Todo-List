@@ -22,7 +22,7 @@ function TodoList() {
         dueAt: "2025-11-10",
       },
       {
-        title: "Book study room",
+        title: "Book a study room",
         desc: "4–6pm, silent floor",
         dueAt: "2025-10-14",
       },
