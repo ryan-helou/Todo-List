@@ -23,13 +23,5 @@ Completed items elegantly fade away like stars disappearing into space. 🌌
 - **Vite** (or CRA)
 - **Vanilla CSS** (gradients, blur, transitions)
 - **LocalStorage API**
-
 ---
-
-## ✅ License
-MIT — use, modify, and distribute freely. Consider a ⭐ if you open‑source it!
-
----
-
-## 🙌 Acknowledgments
-Inspired by retro pixel art, glassmorphism design, and the React community.
+Built by Ryan Helou
