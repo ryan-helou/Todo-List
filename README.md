@@ -24,4 +24,4 @@ Completed items elegantly fade away like stars disappearing into space. 🌌
 - **Vanilla CSS** (gradients, blur, transitions)
 - **LocalStorage API**
 ---
-Built by Ryan Helou
+Built by Ryan Helou :)
