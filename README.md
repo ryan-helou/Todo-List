@@ -1,6 +1,8 @@
-# To-Do List
+# ✅ To-Do List
 
 *A pixel-styled React to-do app where finishing a task makes it fade out like a star going dark.*
+
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=flat-square&logo=githubpages&logoColor=white)
 
 Each task carries a title, an optional description, and a due date. The list stays sorted by due date, undated tasks sink to the bottom, and anything past the end of today wears a red "overdue" chip. Tasks persist in localStorage under the `todo.tasks` key — the app validates the saved shape on load and falls back to three seed tasks if it's missing or corrupt.
 
