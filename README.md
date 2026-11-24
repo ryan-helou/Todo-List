@@ -12,7 +12,7 @@
 
 <br>
 
-This is a small personal project: a to-do list that looks nice and does the basics well. Your tasks are saved in your own browser, so they're still there next time you open the page. No account is needed, and nothing is sent anywhere.
+It's a to-do list built to look good and stay simple. Your tasks are saved in your own browser, so they're still there next time you open the page. No account is needed, and nothing is sent anywhere.
 
 ## What you can do with it
 
