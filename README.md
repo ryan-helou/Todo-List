@@ -4,7 +4,6 @@
 
 **A to-do list in the browser, with a retro pixel look and an animated space-style background.**
 
-<a href="https://todo-list-nu-wheat-23.vercel.app"><img alt="Open todo-list-nu-wheat-23.vercel.app" src="https://img.shields.io/badge/Open-todo--list--nu--wheat--23.vercel.app-24292f?style=for-the-badge"></a>
 
 <!-- facts --><img alt="Saves to: your browser" src="https://img.shields.io/badge/Saves_to-your_browser-24292f?style=for-the-badge"> <img alt="Account: none needed" src="https://img.shields.io/badge/Account-none_needed-24292f?style=for-the-badge">
 
